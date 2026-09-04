@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Định nghĩa CSS tùy chỉnh để làm đẹp giao diện CV
+# 2. CSS tùy chỉnh giao diện CV
 custom_css = """
 <style>
     /* Nền chung */
@@ -33,8 +33,8 @@ custom_css = """
         margin-bottom: 25px;
     }
     
-    /* Cột bên trái */
-    .left-section-title {
+    /* Tiêu đề các mục */
+    .section-title {
         color: #7d5a44;
         font-size: 18px;
         font-weight: bold;
@@ -42,18 +42,6 @@ custom_css = """
         padding-bottom: 5px;
         margin-top: 20px;
         margin-bottom: 12px;
-        text-transform: uppercase;
-    }
-    
-    /* Cột bên phải */
-    .right-section-title {
-        color: #7d5a44;
-        font-size: 18px;
-        font-weight: bold;
-        border-bottom: 2px solid #7d5a44;
-        padding-bottom: 5px;
-        margin-top: 20px;
-        margin-bottom: 15px;
         text-transform: uppercase;
     }
     
@@ -77,12 +65,12 @@ custom_css = """
 """
 st.markdown(custom_css, unsafe_allow_html=True)
 
-# 3. Chia bố cục làm 2 cột (Cột trái: 30%, Cột phải: 70%)
+# 3. Chia bố cục làm 2 cột
 col1, col2 = st.columns([1, 2], gap="large")
 
 # ==================== CỘT TRÁI ====================
 with col1:
-    # Hiển thị ảnh đại diện
+    # Tải ảnh đại diện từ file trong thư mục
     image_files = ["avatar.jpg", "avatar.png", "avatar.jpeg"]
     found_image = False
     
@@ -93,11 +81,10 @@ with col1:
             break
             
     if not found_image:
-        # Khung hình ảnh tạm nếu chưa bỏ file ảnh vào
-        st.warning("⚠️ Chưa tìm thấy file 'avatar.jpg'. Bạn nhớ copy file ảnh vào cùng thư mục nhé!")
+        st.warning("⚠️ Chưa tìm thấy file 'avatar.jpg' trong thư mục.")
 
-    # THÔNG TIN LIÊN HỆ
-    st.markdown('<div class="left-section-title">LIÊN HỆ</div>', unsafe_allow_html=True)[cite: 1]
+    # LIÊN HỆ
+    st.markdown('<div class="section-title">LIÊN HỆ</div>', unsafe_allow_html=True)
     st.markdown("""
     <div class="info-text">
     📞 0376524871<br>
@@ -108,7 +95,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     # HỌC VẤN
-    st.markdown('<div class="left-section-title">HỌC VẤN</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">HỌC VẤN</div>', unsafe_allow_html=True)
     st.markdown("""
     <div class="info-text">
     <b>ĐẠI HỌC NGUYỄN TẤT THÀNH</b><br>
@@ -119,14 +106,14 @@ with col1:
     """, unsafe_allow_html=True)
 
     # NGÔN NGỮ
-    st.markdown('<div class="left-section-title">NGÔN NGỮ</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">NGÔN NGỮ</div>', unsafe_allow_html=True)
     st.markdown("""
     * Tiếng Anh
     * Tiếng Việt
     """)
 
     # SỞ THÍCH
-    st.markdown('<div class="left-section-title">SỞ THÍCH</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">SỞ THÍCH</div>', unsafe_allow_html=True)
     st.markdown("""
     * Nghe nhạc
     * Nấu ăn
@@ -140,7 +127,7 @@ with col2:
     st.markdown('<div class="job-title">Thực tập sinh</div>', unsafe_allow_html=True)
 
     # MỤC TIÊU NGHỀ NGHIỆP
-    st.markdown('<div class="right-section-title">MỤC TIÊU NGHỀ NGHIỆP</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">MỤC TIÊU NGHỀ NGHIỆP</div>', unsafe_allow_html=True)
     st.markdown("""
     <div class="info-text">
     Tìm kiếm cơ hội thực tập tại ngân hàng nhằm học hỏi kinh nghiệm thực tế trong lĩnh vực tài chính - ngân hàng và hiểu rõ hơn về các hoạt động nghiệp vụ trong môi trường làm việc chuyên nghiệp. <br><br>
@@ -149,7 +136,7 @@ with col2:
     """, unsafe_allow_html=True)
 
     # HOẠT ĐỘNG NGOẠI KHÓA
-    st.markdown('<div class="right-section-title">HOẠT ĐỘNG NGOẠI KHÓA</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">HOẠT ĐỘNG NGOẠI KHÓA</div>', unsafe_allow_html=True)
     st.markdown("""
     * Cộng tác viên hỗ trợ tuyển sinh 2024.
     * Workshop Khởi đầu thông minh - Chiến lược đầu tư chứng khoán 2024.
@@ -160,7 +147,7 @@ with col2:
     """)
 
     # KỸ NĂNG
-    st.markdown('<div class="right-section-title">KỸ NĂNG</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">KỸ NĂNG</div>', unsafe_allow_html=True)
     st.markdown("""
     * Kỹ năng giao tiếp, lắng nghe và thuyết phục
     * Kỹ năng làm việc nhóm
@@ -171,7 +158,7 @@ with col2:
     """)
 
     # THÀNH TÍCH
-    st.markdown('<div class="right-section-title">THÀNH TÍCH</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title">THÀNH TÍCH</div>', unsafe_allow_html=True)
     st.markdown("""
     * Học bổng khuyến khích học tập của Vietcombank 2024.
     * Học bổng khuyến khích học tập của Trường Đại học Nguyễn Tất Thành (2024 - 2025).
